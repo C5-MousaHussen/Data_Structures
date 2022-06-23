@@ -15,15 +15,35 @@
     s.pop();  //  stack is now [2] 
 */
 
-
 class Stack {
   constructor() {
     this.data = [];
   }
 
+  push(value) {
+    this.data.push(value);
+  }
+
+  pop() {
+    this.data.pop();
+    return "deleted";
+  }
+
+  peek() {
+    return this.data[this.data.length - 1];
+  }
+
+  size() {
+    return this.data.length;
+  }
   isEmpty() {
     return this.data.length ? false : true;
   }
 }
+
+const stack = new Stack();
+
+stack.push(5);
+console.log(stack.isEmpty());
 
 module.exports = Stack;
