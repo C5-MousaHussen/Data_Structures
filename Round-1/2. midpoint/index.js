@@ -14,8 +14,22 @@
       -  midpoint(list); // returns { data: "b" }
 */
 
-const {LinkedList} = require("./linkedlist");
+const { LinkedList } = require("./linkedlist");
 
-const midpoint = (list) => {};
+const midpoint = (list) => {
+  const newList = new LinkedList();
+
+  let node = newList;
+
+  newList.insertLast("c");
+  newList.insertLast("b");
+  newList.insertLast("c");
+
+  if (!node.size() % 2 == 0) {
+      console.log(node);
+    return node;
+  } else return node.getLast();
+};
+midpoint();
 
 module.exports = midpoint;
