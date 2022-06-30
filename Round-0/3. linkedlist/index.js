@@ -23,7 +23,8 @@ class LinkedList {
     let count = 0;
     while (this.head != null) {
       count++;
-      /* console.log(this.head) */ this.head = this.head.next;
+      /* console.log(this.head) */
+      this.head = this.head.next;
     }
     return count;
   }
@@ -83,6 +84,13 @@ class LinkedList {
       }
       this.head.next = new Node(data);
     }
+
+    //حل اخر
+
+    /*  const LAST = this.getLast()
+    const newNode = new Node(data)
+
+    LAST.next =newNode */
   }
 
   getAt(at) {
@@ -145,9 +153,31 @@ class LinkedList {
     pre.next = node;
   }
 
-  forEach(){
-    
+  forEach(fn) {
+    let node = this.head;
+    while (node) {
+      fn(node)
+      node = node.next;
+    }
+
+    /*  for of solution */
+     // اولا يجب تحويل الابوجكت الا اتريت
+  
+    // نطبق عملية سيمبل . اتريتر
+
+    *[Symbol.iterator](){
+
+      let node =this.head
+      while(node){
+        yield node
+        node = node.next
+      }
+    }
   }
+
+  
+  
+ 
 }
 const a = new LinkedList();
 a.insertFirst("mosa");
