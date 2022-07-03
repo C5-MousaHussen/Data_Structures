@@ -13,10 +13,23 @@
         fromLast(list, 1).data --> "c"
 */
 
-const {LinkedList} = require("./linkedlist");
+const { LinkedList } = require("./linkedlist");
 
 const fromLast = (list, n) => {
-  // TODO: your code here
+  let first = list;
+  let second = list;
+  let number = 0;
+
+  while (second.next ) {
+    first[n] =first[first.number]
+  } 
+  return first
 };
 
+const list = new LinkedList();
+list.insertLast("a");
+list.insertLast("b");
+list.insertLast("c");
+list.insertLast("d");
+console.log(fromLast(list.head,1));
 module.exports = fromLast;
