@@ -17,7 +17,15 @@
 const { LinkedList } = require("./linkedlist");
 
 const midpoint = (list) => {
-  const newList = new LinkedList();
+  let first = list;
+  let second = list;
+
+  while (second.next && second.next.next) {
+    first = first.next;
+    second = second.next.next;
+  }
+  return first;
+  /* const newList = new LinkedList();
 
   let node = newList;
 
@@ -28,8 +36,13 @@ const midpoint = (list) => {
   if (!node.size() % 2 == 0) {
       console.log(node);
     return node;
-  } else return node.getLast();
+  } else return node.getLast(); */
 };
-midpoint();
+
+const list = new LinkedList();
+newList.insertLast("c");
+newList.insertLast("b");
+newList.insertLast("c");
+console.log(midpoint(list.head));
 
 module.exports = midpoint;
