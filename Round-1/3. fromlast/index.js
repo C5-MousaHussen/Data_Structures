@@ -16,14 +16,25 @@
 const { LinkedList } = require("./linkedlist");
 
 const fromLast = (list, n) => {
-  let first = list;
-  let second = list;
-  let number = 0;
+  let fastNode = list.getFirst(); // هواخترنا هاذ الفنكشن حتى نحصل على الهيد
+  let slowNode = list.getFirst();
+  let step = 0; // هاذ حل الستيب نعملو كاونتر بنقدر نستغني عنو بحل ثاني
 
-  while (second.next ) {
-    first[n] =first[first.number]
-  } 
-  return first
+  /*   while (step < n) {
+    step++;
+    fastNode.next;
+  }  رح استعمل حل ثاني*/
+
+  while (n > 0) {
+    fastNode = fastNode.next;
+    n--;
+  }
+
+  while (fastNode.next) {
+    fastNode.next;
+    slowNode = slowNode.next;
+  }
+  return slowNode;
 };
 
 const list = new LinkedList();
@@ -31,5 +42,5 @@ list.insertLast("a");
 list.insertLast("b");
 list.insertLast("c");
 list.insertLast("d");
-console.log(fromLast(list.head,1));
+console.log(fromLast(list, 1));
 module.exports = fromLast;
