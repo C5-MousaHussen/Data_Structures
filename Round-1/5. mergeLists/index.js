@@ -16,7 +16,24 @@
 const { LinkedList } = require("./linkedlist");
 
 const sortedMergeLists = (list_1, list_2) => {
-  // TODO: your code here
+  const mergeList = new LinkedList();
+
+  mergeList.insertFirst(list_1.head);
+
+  if (mergeList) {
+    mergeList.insertLast(list_2.head);
+  }
+
+  return mergeList.head;
 };
+
+const list_1 = new LinkedList();
+const list_2 = new LinkedList();
+
+list_1.insertLast(2);
+list_2.insertLast(3);
+list_1.insertLast(1);
+
+console.log(sortedMergeLists(list_1, list_2));
 
 module.exports = sortedMergeLists;
