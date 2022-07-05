@@ -18,14 +18,18 @@ const { LinkedList } = require("./linkedlist");
 const { Node } = require("./linkedlist");
 
 const circular = (list) => {
-  let first = list.getLast();
-  while (first) {
-    list.insertLast(0);
-  }
+  let first = list;
+  let second = list;
 
-  if (first) {
-    return true;
-  } else false;
+  while (second.next && second.next.next) {
+    first = first.next;
+    second = second.next.next;
+
+    if (first == second) {
+      return true;
+    }
+  }
+  return false;
 };
 
 const list = new LinkedList();
@@ -35,7 +39,7 @@ const c = new Node("c");
 list.head = a;
 a.next = b;
 b.next = c;
-c.next = b;
-console.log(circular(list));
+c.next = a;
+console.log(circular(list.head));
 
 module.exports = circular;
