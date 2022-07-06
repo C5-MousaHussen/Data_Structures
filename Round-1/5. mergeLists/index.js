@@ -16,7 +16,7 @@
 const { LinkedList } = require("./linkedlist");
 
 const sortedMergeLists = (list_1, list_2) => {
-  const mergeList = new LinkedList();
+  /*  const mergeList = new LinkedList();
 
   mergeList.insertFirst(list_1.head);
 
@@ -24,7 +24,33 @@ const sortedMergeLists = (list_1, list_2) => {
     mergeList.insertLast(list_2.head);
   }
 
-  return mergeList.head;
+  return mergeList.head; */
+
+  let L1 = list_1.head;
+  let L2 = list_2.head;
+
+  let newLinked = new LinkedList();
+
+  newLinked.insertFirst(null);
+  let L3 = newLinked.head;
+
+  while (L1 && L2) {
+    if (L1.data > L2.data) {
+      L3.next = L2;
+      L2 = L2.next;
+    } else {
+      L3.next = L1;
+      L1 = L1.next;
+    }
+    L3 = L3.next;
+  }
+  if (L1 == null) {
+    L3.next = L2;
+  }
+  if (L2 == null) {
+    L3.next = L1;
+  }
+  return newLinked.head.next;
 };
 
 const list_1 = new LinkedList();
