@@ -18,7 +18,27 @@
         and return true or false depend on the node exist or not. 
 */
 
-class Node {}
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
 
-class BST {}
+class BST {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(data) {
+    let newNode = new Node(data);
+
+    if (this.root === null) {
+      this.root = newNode;
+    } else this.inserNewNode(this.root, newNode)
+  }
+
+  inserNewNode()
+}
 module.exports = { Node, BST };

@@ -15,14 +15,46 @@
         and return the Node in the tree with the same value.
 */
 
+/* 
+1- شرط الباينري تري دايما فيها ليفت ورايت
+
+ودايما لليفت اكبر من قيمة الرايت
+
+*/
+
 class Node {
   constructor(data) {
     this.data = data;
     this.left = null;
     this.right = null;
   }
-}
 
+  inser(data) {
+    if (data < this.data && this.left) {
+      // رح يشوف اذا الداتا اقل من الداتا الرئيسية ومن جهة اليسار ينضاف
+      this.left.insert(data); // نظام ركيرجن
+    } else if (data < this.data) {
+      this.left = new Node(data);
+    } else if (data > this.data && this.right) {
+      this.right.insert(data);
+    } else if (data > this.data) {
+      this.right = new Node(data);
+    }
+  }
+
+  contains(data) {
+    if (this.data == data) {
+      return this;
+    }
+    if (data > this.data && this.right) {
+      return this.right.contains(data);
+    } else if (data < this.data && this.left) {
+      this.left.contains(data);
+    }
+    return "Not Found"
+  }
+}
+/* 
 class BinarySearchTree {
   constructor() {
     this.root = null;
@@ -61,3 +93,4 @@ BST.insert(27);
 console.log(BST);
 
 module.exports = Node;
+ */
