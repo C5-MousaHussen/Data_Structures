@@ -36,9 +36,31 @@ class BST {
 
     if (this.root === null) {
       this.root = newNode;
-    } else this.inserNewNode(this.root, newNode)
-  }
+      return;
+    } else this.insertNewNode(node);
 
-  inserNewNode()
+    let insertNewNode = (node) => {
+      if (node.data > data) {
+        if (!node.left) {
+          return (node.left = newNode);
+        }
+        return insertNewNode(node.left);
+      }
+      if (node.data < data) {
+        if (!node.right) {
+          return (node.right = newNode);
+        } else {
+          insertNewNode(node.right);
+        }
+      }
+    };
+  }
 }
+
+const newBST = new BST();
+
+newBST.insert(5);
+newBST.insert(7);
+newBST.insert(2);
+
 module.exports = { Node, BST };
