@@ -19,7 +19,7 @@ Answer: [1, 3, 2]
 const Node = require("./node");
 
 const levelWidth = (root) => {
-  if (root == null) return 0;
+  /* if (root == null) return 0;
 
   let maxwidth = 0;
   let arr = [];
@@ -45,16 +45,30 @@ const levelWidth = (root) => {
       }
     }
   }
-  return maxwidth;
+  return maxwidth; */
+
+  const arr = [root, "end level"];
+  const answer = [0];
+
+  while (arr.length > 1) {
+    const node = arr.shift();
+    if (node == "end level") {
+      answer.push(0);
+      arr.push("end level");
+    } else {
+      arr.push(...node.children);
+      answer[answer.length - 1]++;
+    }
+  }
 };
 
-let root = new Node();
+let root = new Node(8);
 
-root.add(1)
-root.add(2)
-root.add(3)
+root.add(1);
+root.add(2);
 
-
+root.children[0].add(1);
+root.children[1].add(14);
 
 console.log(levelWidth(2));
 
